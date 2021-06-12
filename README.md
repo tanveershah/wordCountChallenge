@@ -45,7 +45,9 @@ then go into the project directory using this command in the terminal
 
 ### `cd wordCountChallenge`
 
-In the project directory, you can run:
+In the project directory, run following commands:
+
+### `npm install`
 
 ### `npm start`
 
