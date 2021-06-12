@@ -7,7 +7,7 @@ This app performs following operations on a text:
 3. Sentence Count
 4. Paragraph Count
 
-Inititially, it exracts first three paragraphs from https://baconipsum.com url.
+Inititially, it exracts first three paragraphs from https://baconipsum.com url.\
 Once application is running in browser, a user can enter any text in the text area,\
 it will dynamically count characters, words, sentences and paragraphs in the user entered\
 or pasted text without refreshing the app (or browser).
