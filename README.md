@@ -23,6 +23,18 @@ Following technologies (tech and packages) used to develop this app:
 5. css
 6. html
 
+# Dependencies
+
+1. @testing-library/jest-dom: 5.14.1
+2. @testing-library/react: 11.2.7
+3. @testing-library/user-event: 12.8.3
+4. ramda: 0.27.1
+5. react: 17.0.2
+6. react-dom: 17.0.2
+7. react-scripts: 4.0.3
+8. web-vitals: 1.1.2
+9. whatwg-fetch: 3.6.2
+
 # Getting Started with Word Count Challenge App (Installation, download and setup)
 
 # Clone project repository to a local machine
@@ -53,3 +65,10 @@ It correctly bundles React in production mode and optimizes the build for the be
 After build
 
 ### `npm start`
+
+In future, most frequent words count will be added.
+
+# Author
+
+Tanveer
+email: tanvirhussein@gmail.com
