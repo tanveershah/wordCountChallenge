@@ -1,43 +1,26 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { compose } from 'ramda';
 import 'whatwg-fetch';
 import './index.css';
 
-class Counter extends Component {
-  state = {
+const Counter = (props) => {
+  const [values, setValues] = useState({
     text: '',
     characters: 0,
     words: 0,
     sentences: 0,
     paragraphs: 0,
-  };
+  });
 
-  componentDidMount() {
-    this.getText()
-      .then((content) => {
-        this.setState({ text: content.join('\n\n') }, () =>
-          this.counter(this.state.text)
-        );
-      })
-      .catch((err) => this.setState({ text: `Error: ${err.message}` }));
-  }
-
-  // getText gets first three paragraphs from https://baconipsum.com
-  getText = async () => {
-    const paras = await fetch(
-      'https://baconipsum.com/api/?type=all-meat&paras=3'
+  useEffect(() => {
+    fetch(counter(values.text)).catch((err) =>
+      setValues({ text: `Error: ${err.message}` })
     );
-    const body = paras.json();
-
-    if (paras.status !== 200) {
-      throw Error(body.message);
-    }
-
-    return body;
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // this function removes line breaks
-  discardBreaks = (array) => {
+  const discardBreaks = (array) => {
     const idx = array.findIndex((element) => element.match(/\r?\n|\r/g));
 
     // Base case
@@ -52,13 +35,13 @@ class Counter extends Component {
     ];
 
     // recurvsive case
-    return this.discardBreaks(cleanArray);
+    return discardBreaks(cleanArray);
   };
 
   // Multiple spaces and return keys will result in empty elements in the array,
   // discardEmptyElements function will remove them.
 
-  discardEmptyElements = (array) => {
+  const discardEmptyElements = (array) => {
     const idx = array.findIndex((element) => element.trim() === '');
 
     // base case
@@ -69,22 +52,22 @@ class Counter extends Component {
     array.splice(idx, 1);
 
     // recursive case
-    return this.discardEmptyElements(array);
+    return discardEmptyElements(array);
   };
 
-  counter = (string) => {
+  const counter = (string) => {
     const cleanText = string.trim();
     const wordArray = compose(
-      this.discardEmptyElements,
-      this.discardBreaks
+      discardEmptyElements,
+      discardBreaks
     )(cleanText.split(' '));
     const sentenceArray = compose(
-      this.discardEmptyElements,
-      this.discardBreaks
+      discardEmptyElements,
+      discardBreaks
     )(cleanText.split('.'));
-    const paraArray = this.discardEmptyElements(cleanText.split(/\r?\n|\r/));
+    const paraArray = discardEmptyElements(cleanText.split(/\r?\n|\r/));
 
-    this.setState({
+    setValues({
       text: string,
       characters: cleanText.length,
       words: string === '' ? 0 : wordArray.length,
@@ -93,33 +76,31 @@ class Counter extends Component {
     });
   };
 
-  handleChange = (e) => this.counter(e.target.value);
+  const handleChange = (e) => counter(e.target.value);
 
-  render() {
-    return (
-      <div>
-        <textarea
-          rows="15"
-          onChange={this.handleChange}
-          value={this.state.text}
-        ></textarea>
-        <p>
-          <b>Character count: </b>
-          {this.state.characters}
-          <br />
-          <b>Words count: </b>
-          {this.state.words}
-          <br />
-          <b>Sentence count: </b>
-          {this.state.sentences}
-          <br />
-          <b>paragraph count: </b>
-          {this.state.paragraphs}
-          <br />
-        </p>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <textarea
+        rows="15"
+        onChange={handleChange}
+        value={values.text}
+      ></textarea>
+      <p>
+        <b>Character count: </b>
+        {values.characters}
+        <br />
+        <b>Words count: </b>
+        {values.words}
+        <br />
+        <b>Sentence count: </b>
+        {values.sentences}
+        <br />
+        <b>paragraph count: </b>
+        {values.paragraphs}
+        <br />
+      </p>
+    </div>
+  );
+};
 
 export default Counter;

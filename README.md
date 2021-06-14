@@ -7,7 +7,6 @@ This app performs following operations on a text:
 3. Sentence Count
 4. Paragraph Count
 
-Inititially, it exracts first three paragraphs from https://baconipsum.com url.\
 Once application is running in browser, a user can enter any text in the text area,\
 it will dynamically count characters, words, sentences and paragraphs in the user entered\
 or pasted text without refreshing the app (or browser).
@@ -22,6 +21,7 @@ Following technologies (tech and packages) used to develop this app:
 4. whatwg-fetch
 5. css
 6. html
+7. React Hooks
 
 # Dependencies
 
@@ -72,5 +72,5 @@ In future, most frequent words count will be added.
 
 # Author
 
-Tanveer
+Tanveer\
 email: tanvirhussein@gmail.com
