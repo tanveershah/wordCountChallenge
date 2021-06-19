@@ -21,38 +21,32 @@ const Counter = (props) => {
 
   // this function removes line breaks
   const discardBreaks = (array) => {
-    const idx = array.findIndex((element) => element.match(/\r?\n|\r/g));
+    let idx;
 
-    // Base case
-    if (idx === -1) {
-      return array;
+    while (
+      (idx = array.findIndex((element) => element.match(/\r?\n|\r/g))) !== -1
+    ) {
+      // const idx = array.findIndex((element) => element.match(/\r?\n|\r/g));
+      array = [
+        ...array.slice(0, idx),
+        ...array[idx].split(/\r?\n|\r/),
+        ...array.slice(idx + 1, array.length),
+      ];
     }
 
-    const cleanArray = [
-      ...array.slice(0, idx),
-      ...array[idx].split(/\r?\n|\r/),
-      ...array.slice(idx + 1, array.length),
-    ];
-
-    // recurvsive case
-    return discardBreaks(cleanArray);
+    return array;
   };
 
   // Multiple spaces and return keys will result in empty elements in the array,
   // discardEmptyElements function will remove them.
 
   const discardEmptyElements = (array) => {
-    const idx = array.findIndex((element) => element.trim() === '');
+    let idx;
 
-    // base case
-    if (idx === -1) {
-      return array;
+    while ((idx = array.findIndex((element) => element.trim() === '')) !== -1) {
+      array.splice(idx, 1);
     }
-
-    array.splice(idx, 1);
-
-    // recursive case
-    return discardEmptyElements(array);
+    return array;
   };
 
   const counter = (string) => {
