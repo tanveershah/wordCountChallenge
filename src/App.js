@@ -50,6 +50,7 @@ const Counter = (props) => {
     return array;
   };
 
+  // counter converts text to paragraphs, sentences, and words and sets the state
   const counter = (string) => {
     const cleanText = string.trim();
     const wordArray = compose(
