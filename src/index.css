@@ -1,5 +1,7 @@
 body {
   background: lightgrey;
+  margin-top: 2rem;
+  margin-left: 15%;
 }
 
 p {
@@ -7,6 +9,15 @@ p {
 }
 
 textarea {
-  width: 100%;
+  width: 80%;
   font-size: 100%;
+}
+
+.headings b {
+  color: green;
+}
+
+.title {
+  color: green;
+  margin-left: 30%;
 }

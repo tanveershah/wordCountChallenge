@@ -70,16 +70,36 @@ const Counter = (props) => {
     });
   };
 
-  const handleChange = (e) => counter(e.target.value);
+  // const wordFrequency = (array) => {
+  //   let text
+  //   let counts = {}
+  //   const keys = []
+
+  //   function
+  // }
+
+  const handleChange = (e) => {
+    if (e.target.id === 'myFile') {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onload = function () {
+        counter(reader.result);
+      };
+      reader.readAsText(file);
+    } else {
+      counter(e.target.value);
+    }
+  };
 
   return (
     <div>
+      <h2 className="title">Text Analysis</h2>
       <textarea
         rows="15"
         onChange={handleChange}
         value={values.text}
       ></textarea>
-      <p>
+      <p className="headings">
         <b>Character count: </b>
         {values.characters}
         <br />
@@ -93,6 +113,15 @@ const Counter = (props) => {
         {values.paragraphs}
         <br />
       </p>
+      <div>
+        <input
+          type="file"
+          id="myFile"
+          placeholder="Choose Text File"
+          onChange={handleChange}
+        />
+        {/* <input type="submit" id="file-submit" onChange={handleChange} /> */}
+      </div>
     </div>
   );
 };
