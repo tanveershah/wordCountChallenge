@@ -9,7 +9,7 @@ p {
 }
 
 textarea {
-  width: 80%;
+  width: 90%;
   font-size: 100%;
 }
 
@@ -19,5 +19,5 @@ textarea {
 
 .title {
   color: green;
-  margin-left: 30%;
+  margin-left: 20%, auto;
 }
