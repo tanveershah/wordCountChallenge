@@ -73,9 +73,9 @@ const Counter = (props) => {
     });
   };
 
+  // wordFrequenccy function counts the frequency of each word and sorts them to keep most frequent words at the top
   const wordFrequency = (array) => {
     let counts = {};
-    // const keys = [];
 
     for (let i = 0; i < array.length; i++) {
       const word = array[i].toLowerCase();
@@ -86,7 +86,6 @@ const Counter = (props) => {
           counts[word] = counts[word] + 1;
         } else {
           counts[word] = 1;
-          // keys.push(word);
         }
       }
     }
