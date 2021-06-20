@@ -6,10 +6,12 @@ This app performs following operations on a text:
 2. Word Count
 3. Sentence Count
 4. Paragraph Count
+5. Word Frequency Analysis
 
 Once application is running in browser, a user can enter any text in the text area,\
-it will dynamically count characters, words, sentences and paragraphs in the user entered\
-or pasted text without refreshing the app (or browser).
+it will dynamically count characters, words, words frequency, sentences and paragraphs in the user entered\
+or pasted text without refreshing the app (or browser). A text file can be added by clicking\
+Choose Text File button.
 
 # Tech Stack
 

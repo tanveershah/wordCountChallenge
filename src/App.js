@@ -10,6 +10,7 @@ const Counter = (props) => {
     words: 0,
     sentences: 0,
     paragraphs: 0,
+    counts: {},
   });
 
   useEffect(() => {
@@ -60,6 +61,7 @@ const Counter = (props) => {
       discardBreaks
     )(cleanText.split('.'));
     const paraArray = discardEmptyElements(cleanText.split(/\r?\n|\r/));
+    const frequency = wordFrequency(wordArray);
 
     setValues({
       text: string,
@@ -67,16 +69,30 @@ const Counter = (props) => {
       words: string === '' ? 0 : wordArray.length,
       sentences: string === '' ? 0 : sentenceArray.length,
       paragraphs: string === '' ? 0 : paraArray.length,
+      counts: frequency,
     });
   };
 
-  // const wordFrequency = (array) => {
-  //   let text
-  //   let counts = {}
-  //   const keys = []
+  const wordFrequency = (array) => {
+    let counts = {};
+    // const keys = [];
 
-  //   function
-  // }
+    for (let i = 0; i < array.length; i++) {
+      const word = array[i].toLowerCase();
+
+      if (!/\d+/.test(word)) {
+        //exlude numbers
+        if (counts[word]) {
+          counts[word] = counts[word] + 1;
+        } else {
+          counts[word] = 1;
+          // keys.push(word);
+        }
+      }
+    }
+
+    return counts;
+  };
 
   const handleChange = (e) => {
     if (e.target.id === 'myFile') {
@@ -114,14 +130,15 @@ const Counter = (props) => {
         <br />
       </p>
       <div>
-        <input
-          type="file"
-          id="myFile"
-          placeholder="Choose Text File"
-          onChange={handleChange}
-        />
-        {/* <input type="submit" id="file-submit" onChange={handleChange} /> */}
+        <input type="file" id="myFile" onChange={handleChange} />
       </div>
+      <br></br>
+      <h2 className="title">Word Frequency</h2>
+      {Object.keys(values.counts)
+        .sort((a, b) => values.counts[b] - values.counts[a])
+        .map((key, i) => (
+          <div key={i}>{key + ': ' + values.counts[key]}</div>
+        ))}
     </div>
   );
 };
