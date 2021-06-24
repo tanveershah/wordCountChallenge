@@ -95,7 +95,7 @@ const Counter = (props) => {
   };
 
   const handleChange = (e) => {
-    if (e.target.id === 'myFile') {
+    if (e.target.id === 'myFile' && e.target.value) {
       const file = e.target.files[0];
       const reader = new FileReader();
       reader.onload = function () {

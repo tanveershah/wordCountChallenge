@@ -70,7 +70,7 @@ After build
 
 ### `npm start`
 
-In future, most frequent words count will be added.
+Contribution: Feel free to add a new feature.
 
 # Author
 
