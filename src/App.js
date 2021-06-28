@@ -56,7 +56,8 @@ const Counter = (props) => {
     const wordArray = compose(
       discardEmptyElements,
       discardBreaks
-    )(cleanText.split(' '));
+    )(cleanText.split(/[ ,.:]/));
+    // const wordArray = compose(wordArray1.split(','));
     const sentenceArray = compose(
       discardEmptyElements,
       discardBreaks
