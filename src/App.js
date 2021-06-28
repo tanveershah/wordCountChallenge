@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { compose } from 'ramda';
 import 'whatwg-fetch';
@@ -17,7 +18,6 @@ const Counter = (props) => {
     fetch(counter(values.text)).catch((err) =>
       setValues({ text: `Error: ${err.message}` })
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // this function removes line breaks
@@ -57,7 +57,6 @@ const Counter = (props) => {
       discardEmptyElements,
       discardBreaks
     )(cleanText.split(/[ ,.:]/));
-    // const wordArray = compose(wordArray1.split(','));
     const sentenceArray = compose(
       discardEmptyElements,
       discardBreaks
