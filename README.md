@@ -75,4 +75,4 @@ Contribution: Feel free to add a new feature.
 # Author
 
 Tanveer\
-(https://www.linkedin.com/in/tanveerhshah/)[LinkedIn]
+[LinkedIn](https://www.linkedin.com/in/tanveerhshah/)
