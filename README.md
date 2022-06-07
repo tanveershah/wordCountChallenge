@@ -75,4 +75,4 @@ Contribution: Feel free to add a new feature.
 # Author
 
 Tanveer\
-email: tanvirhussein@gmail.com
+(LinkedIn)[https://www.linkedin.com/in/tanveerhshah/]
